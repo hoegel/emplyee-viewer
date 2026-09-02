@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using Task2.Helpers;
+using Task2.Models;
+
+namespace Task2.ViewModels
+{
+    internal class ApplicationViewModel : ViewModelBase
+    {
+        public ObservableCollection<Employee> Employees { get; set; }
+        private Employee selectedEmployee;
+
+        private RelayCommand createCommand;
+        public RelayCommand CreateCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+                return createCommand ??
+                    (createCommand = new RelayCommand(obj =>
+                    {
+
+                    }));
+            }
+        }
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+                return updateCommand ??
+                    (updateCommand = new RelayCommand(obj =>
+                    {
+
+                    }));
+            }
+        }
+        private RelayCommand deleteCommand;
+        public RelayCommand DeleteCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+                return deleteCommand ??
+                    (deleteCommand = new RelayCommand(obj =>
+                    {
+
+                    }));
+            }
+        }
+
+        public ApplicationViewModel()
+        {
+            Employees = new ObservableCollection<Employee>
+                {
+                    new Employee { Id = 1, FullName = "John Doe", Age = 33, IsMarried = true,  HireDate = new DateTime(2015, 7, 20), Position = Position.Middle,   Salary = 1500 },
+                    new Employee { Id = 2, FullName = "Mary Sue", Age = 23, IsMarried = false, HireDate = DateTime.Today,                Position = Position.Junior,    Salary = 1000 },
+                    new Employee { Id = 3, FullName = "Alex Gordon", Age = 41, IsMarried = true,  HireDate = new DateTime(2018, 3, 15), Position = Position.Teamlead,  Salary = 2500 },
+                    new Employee { Id = 4, FullName = "Shale Mamboo", Age = 27, IsMarried = false, HireDate = new DateTime(2020, 11, 1), Position = Position.Middle,   Salary = 1500 },
+                    new Employee { Id = 5, FullName = "Sean Lee", Age = 36, IsMarried = true,  HireDate = new DateTime(2019, 6, 10), Position = Position.Senior,    Salary = 2500 },
+                    new Employee { Id = 6, FullName = "Emma Watson", Age = 29, IsMarried = false, HireDate = new DateTime(2021, 2, 28), Position = Position.Junior,    Salary = 1100 },
+                    new Employee { Id = 7, FullName = "Michael Brown", Age = 45, IsMarried = true,  HireDate = new DateTime(2010, 5, 5), Position = Position.Teamlead,  Salary = 2800 },
+                    new Employee { Id = 8, FullName = "Olivia Smith", Age = 31, IsMarried = false, HireDate = new DateTime(2016, 12, 12), Position = Position.Middle,   Salary = 1700 },
+                    new Employee { Id = 9, FullName = "David Johnson", Age = 38, IsMarried = true,  HireDate = new DateTime(2017, 9, 9), Position = Position.Senior,    Salary = 2600 },
+                    new Employee { Id = 10, FullName = "Sophia Williams", Age = 24, IsMarried = false, HireDate = DateTime.Today.AddDays(-30), Position = Position.Junior, Salary = 950 },
+                };
+        }
+
+        public Employee SelectedEmployee
+        {
+            get { return selectedEmployee; }
+            set
+            {
+                selectedEmployee = value;
+                OnPropertyChanged("SelectedEmplyee");
+            }
+        }
+        public override event PropertyChangedEventHandler PropertyChanged;
+        public override void OnPropertyChanged([CallerMemberName] string prop = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
+    }
+}
