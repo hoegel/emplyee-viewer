@@ -21,12 +21,13 @@ namespace Task2.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
                 return createCommand ??
                     (createCommand = new RelayCommand(obj =>
                     {
 
-                    }));
+                    },
+                    (obj) => true));
             }
         }
         private RelayCommand updateCommand;
@@ -34,12 +35,13 @@ namespace Task2.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
                 return updateCommand ??
                     (updateCommand = new RelayCommand(obj =>
                     {
 
-                    }));
+                    },
+                    (obj) => selectedEmployee != null));
             }
         }
         private RelayCommand deleteCommand;
@@ -47,12 +49,13 @@ namespace Task2.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
                 return deleteCommand ??
                     (deleteCommand = new RelayCommand(obj =>
                     {
-
-                    }));
+                        Employees.Remove(SelectedEmployee);
+                    },
+                    (obj) => selectedEmployee != null));
             }
         }
 

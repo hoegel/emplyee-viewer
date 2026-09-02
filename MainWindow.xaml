@@ -1,12 +1,51 @@
 ﻿<Window x:Class="Task2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:Task2.Properties"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Task2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="{x:Static res:Resources.MenuOption_File}">
+                <MenuItem Header="{x:Static res:Resources.MenuOption_Open}" IsEnabled="False"/>
+                <MenuItem Header="{x:Static res:Resources.MenuOption_Save}" IsEnabled="False"/>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" >
+            <Button Command="{Binding CreateCommand}" Content="{x:Static res:Resources.Button_Create}" />
+            <Button Command="{Binding UpdateCommand}" Content="{x:Static res:Resources.Button_Update}"/>
+            <Button Command="{Binding DeleteCommand}" Content="{x:Static res:Resources.Button_Delete}" />
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding Employees}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding SelectedEmployee}"
+                  Grid.Column="1"
+                  Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_Id}" 
+                            Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_FullName}"  Binding="{Binding FullName}" Width="*" />
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_Age}"  Binding="{Binding Age}" Width="Auto" />
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_IsMarried}"  Binding="{Binding IsMarried}" Width="Auto" />
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_Position}" Binding="{Binding Position}" Width="Auto" />
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_HireDate}"  Binding="{Binding HireDate, StringFormat=dd.MM.yyyy}" Width="Auto" />
+                <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_Salary}"  Binding="{Binding Salary, StringFormat=C}" Width="Auto" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
