@@ -18,7 +18,7 @@ enum Position
 
 namespace Task2.Models
 {
-    internal class Employee : INotifyPropertyChanged
+    internal class Employee : INotifyPropertyChanged, IDataErrorInfo
     {
         private uint id;
         private string fullName;
@@ -89,6 +89,30 @@ namespace Task2.Models
             {
                 salary = value;
                 OnPropertyChanged("Salary");
+            }
+        }
+
+        public string Error => null;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch(columnName)
+                {
+                    case nameof(FullName):
+                        if (string.IsNullOrWhiteSpace(FullName)) return "Full name is required";
+                        break;
+
+                    case nameof(Age):
+                        if (Age <= 0 || Age > 100) return "Age must be between 1 and 100";
+                        break;
+
+                    case nameof(Salary):
+                        if (Salary < 0) return "Salary cannot be negative";
+                        break;
+                }
+                return null;
             }
         }
 

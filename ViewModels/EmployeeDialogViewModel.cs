@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Task2.Helpers;
 using Task2.Models;
 
@@ -17,6 +18,13 @@ namespace Task2.ViewModels
             this.employee = employee;
         }
         public EmployeeDialogViewModel() { }
+
+        private bool IsEmployeeValid()
+        {
+            string[] validatedProps = { "FullName", "Age", "Salary" };
+            IDataErrorInfo validator = Employee;
+            return validatedProps.All(p => string.IsNullOrEmpty(validator[p]));
+        }
 
         public IEnumerable<Position> Positions => Enum.GetValues(typeof(Position)).Cast<Position>();
         private Employee employee;
@@ -40,6 +48,11 @@ namespace Task2.ViewModels
                 return okCommand ?? (okCommand = new RelayCommand
                     ((obj) =>
                     {
+                        if(!IsEmployeeValid())
+                        {
+                            MessageBox.Show("Please enter valid data", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
                         RequestClose?.Invoke(true);
                     }));
             }
