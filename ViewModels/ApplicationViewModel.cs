@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Task2.Helpers;
 using Task2.Models;
+using Task2.Views;
 
 namespace Task2.ViewModels
 {
@@ -21,11 +19,21 @@ namespace Task2.ViewModels
         {
             get
             {
-                //throw new NotImplementedException();
                 return createCommand ??
                     (createCommand = new RelayCommand(obj =>
                     {
+                        Employee emp = new Employee
+                        {
+                            Id = Employees.Any() ? Employees.Max(e => e.Id) + 1 : 1,
+                            Age = 18, FullName = "",
+                            HireDate = DateTime.Today,
+                            IsMarried = false,
+                            Position = Position.Junior,
+                            Salary = 1000
+                        };
 
+                        var dialog = new EmployeeDialog(emp);
+                        if (dialog.ShowDialog() == true) Employees.Add(emp);
                     },
                     (obj) => true));
             }
@@ -35,11 +43,15 @@ namespace Task2.ViewModels
         {
             get
             {
-                //throw new NotImplementedException();
                 return updateCommand ??
                     (updateCommand = new RelayCommand(obj =>
                     {
-
+                        var emp = new Employee(selectedEmployee);
+                        var dialog = new EmployeeDialog(emp);
+                        if(dialog.ShowDialog() == true)
+                        {
+                            Employees[Employees.IndexOf(selectedEmployee)] = emp;
+                        }
                     },
                     (obj) => selectedEmployee != null));
             }
@@ -49,7 +61,6 @@ namespace Task2.ViewModels
         {
             get
             {
-                //throw new NotImplementedException();
                 return deleteCommand ??
                     (deleteCommand = new RelayCommand(obj =>
                     {
@@ -85,6 +96,7 @@ namespace Task2.ViewModels
                 OnPropertyChanged("SelectedEmplyee");
             }
         }
+
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged([CallerMemberName] string prop = null)
         {

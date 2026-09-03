@@ -107,5 +107,17 @@ namespace Task2.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        public Employee() { }
+        public Employee(Employee e)
+        {
+            this.id = e.Id;
+            this.fullName = e.FullName;
+            this.age = e.Age;
+            this.isMarried = e.IsMarried;
+            this.position = e.Position;
+            this.hireDate = e.HireDate;
+            this.salary = e.Salary;
+        }
     }
 }
