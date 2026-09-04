@@ -6,7 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using Task2.Helpers;
 using Task2.Models;
+using Task2.Services;
 using Task2.Views;
+using System.Collections.Generic;
 
 namespace Task2.ViewModels
 {
@@ -70,6 +72,53 @@ namespace Task2.ViewModels
                             Employees.Remove(SelectedEmployee);
                     },
                     (obj) => selectedEmployee != null));
+            }
+        }
+
+        private RelayCommand exportConnamd;
+        public RelayCommand ExportCommand
+        {
+            get
+            {
+                return exportConnamd ?? (exportConnamd = new RelayCommand(obj =>
+                {
+                    var dialog = new Microsoft.Win32.SaveFileDialog { Filter = "CSV files (*.csv)|*.csv" };
+                    if (dialog.ShowDialog() != true) return;
+                    try
+                    {
+                        EmployeeCsvService.ExportToCsv(Employees, dialog.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Export failed : {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }));
+            }
+        }
+
+        private RelayCommand importCommand;
+        public RelayCommand ImportCommand
+        {
+            get
+            {
+                return importCommand ?? (importCommand = new RelayCommand(obj =>
+                {
+                    var dialog = new Microsoft.Win32.OpenFileDialog { Filter = "CSV files (*.csv)|*.csv" };
+                    if(dialog.ShowDialog() != true) return;
+
+                    List<Employee> imported;
+                    try
+                    {
+                        imported = EmployeeCsvService.ImportFromCsv(dialog.FileName);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show($"Import failed : {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    Employees.Clear();
+                    foreach (var e in imported) Employees.Add(e);
+                }));
             }
         }
 

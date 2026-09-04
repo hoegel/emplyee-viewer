@@ -18,8 +18,8 @@
 
         <Menu Grid.ColumnSpan="2">
             <MenuItem Header="{x:Static res:Resources.MenuOption_File}">
-                <MenuItem Header="{x:Static res:Resources.MenuOption_Open}" IsEnabled="False"/>
-                <MenuItem Header="{x:Static res:Resources.MenuOption_Save}" IsEnabled="False"/>
+                <MenuItem Header="{x:Static res:Resources.MenuOption_Open}" Command="{Binding ImportCommand}"/>
+                <MenuItem Header="{x:Static res:Resources.MenuOption_Save}" Command="{Binding ExportCommand}"/>
             </MenuItem>
         </Menu>
 
