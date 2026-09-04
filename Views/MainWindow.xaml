@@ -21,6 +21,7 @@
                 <MenuItem Header="{x:Static res:Resources.MenuOption_Open}" Command="{Binding ImportCommand}"/>
                 <MenuItem Header="{x:Static res:Resources.MenuOption_Save}" Command="{Binding ExportCommand}"/>
             </MenuItem>
+            <MenuItem Header="Settings" Command="{Binding SettingsCommand}"/>
         </Menu>
 
         <StackPanel Grid.Column="0" Grid.Row="1" >

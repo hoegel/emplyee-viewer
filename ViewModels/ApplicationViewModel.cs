@@ -38,7 +38,11 @@ namespace Task2.ViewModels
                         var dialog = new EmployeeDialog(emp);
                         if (dialog.ShowDialog() == true) Employees.Add(emp);
                     },
-                    (obj) => true));
+                    (obj) =>
+                    {
+                        if (Employees.Count >= Properties.Settings.Default.MaxRecordsCount) return false;
+                        return true;
+                    }));
             }
         }
         private RelayCommand updateCommand;
@@ -116,8 +120,47 @@ namespace Task2.ViewModels
                         MessageBox.Show($"Import failed : {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
+
+                    if(imported.Count > Properties.Settings.Default.MaxRecordsCount)
+                    {
+                        MessageBox.Show("This file contains too many records (check out settings)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                     Employees.Clear();
                     foreach (var e in imported) Employees.Add(e);
+                }));
+            }
+        }
+
+        private RelayCommand settingsCommand;
+        public RelayCommand SettingsCommand
+        {
+            get
+            {
+                return settingsCommand ?? (settingsCommand = new RelayCommand(obj =>
+                {
+                    var dialog = new SettingsDialog();
+                    var vm = (SettingsDialogViewModel)dialog.DataContext;
+
+                    if(dialog.ShowDialog() == true)
+                    {
+                        if(vm.MaxRecordsCount < Employees.Count)
+                        {
+                            MessageBoxResult messageBoxResult = MessageBox.Show($"You have set a record limit lower than the number of records currently loaded. Do you want to trim the list?", "Shrink records", System.Windows.MessageBoxButton.YesNo);
+                            if (messageBoxResult == MessageBoxResult.Yes)
+                            {
+                                for (int i = Employees.Count - 1; i >= vm.MaxRecordsCount; --i)
+                                {
+                                    Employees.RemoveAt(i);
+                                }
+                            }
+                        }
+                        Properties.Settings.Default.MaxRecordsCount = vm.MaxRecordsCount;
+                        Properties.Settings.Default.IsDarkTheme = vm.SelectedTheme == "Dark";
+                        Properties.Settings.Default.Save();
+
+                        //ThemeManager.ApplyTheme(Properties.Settings.Default.IsDarkTheme);
+                    }
                 }));
             }
         }

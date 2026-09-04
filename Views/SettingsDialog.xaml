@@ -1,0 +1,54 @@
+﻿<Window x:Class="Task2.Views.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:res="clr-namespace:Task2.Properties"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task2.Views"
+        mc:Ignorable="d"
+        Title="SettingsDialog" Height="270" Width="430">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Apperience" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Theme" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                            Grid.Row="0" Grid.Column="0"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" Height="27"
+                            ItemsSource="{Binding Themes}"
+                            SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
+                            Margin="5" Width="110" HorizontalAlignment="Left"
+                            IsEnabled="False" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Records" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Content="Max records:" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                <TextBox Text="{Binding MaxRecordsCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="2">
+            <Button HorizontalAlignment="Left" Content="{x:Static res:Resources.Button_Confirm}" Command="{Binding OkCommand}"/>
+            <Button HorizontalAlignment="Right" Content="{x:Static res:Resources.Button_Cancel}" Command="{Binding CancelCommand}" />
+        </Grid>
+    </Grid>
+</Window>
