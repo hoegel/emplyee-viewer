@@ -121,6 +121,36 @@ namespace Task2.ViewModels
                         return;
                     }
 
+                    var duplicateGroups = imported
+                        .GroupBy(e => e.Id)
+                        .Where(g => g.Count() > 1)
+                        .ToList();
+
+                    if (duplicateGroups.Any())
+                    {
+                        var details = string.Join("\n", duplicateGroups
+                            .Select(g => $"  Id {g.Key}: {string.Join(", ", g.Select(e => e.FullName))}"));
+
+                        var choice = MessageBox.Show(
+                            $"This file contains the following Id duplicates:\n{details}\n\n" +
+                            "Keep the first occurrence of each duplicate and ignore the rest?",
+                            "Duplicate IDs Found",
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Warning);
+
+                        if (choice != MessageBoxResult.Yes)
+                        {
+                            MessageBox.Show("Import cancelled. Please, fix the file and try again",
+                                "Import cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
+                            return;
+                        }
+
+                        imported = imported
+                            .GroupBy(e => e.Id)
+                            .Select(g => g.First())
+                            .ToList();
+                    }
+
                     if(imported.Count > Properties.Settings.Default.MaxRecordsCount)
                     {
                         MessageBox.Show("This file contains too many records (check out settings)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
