@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using Task2.Helpers;
 using Task2.Models;
 using Task2.Views;
@@ -64,7 +65,9 @@ namespace Task2.ViewModels
                 return deleteCommand ??
                     (deleteCommand = new RelayCommand(obj =>
                     {
-                        Employees.Remove(SelectedEmployee);
+                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete '{SelectedEmployee.FullName}' (id = {SelectedEmployee.Id})?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                        if (messageBoxResult == MessageBoxResult.Yes)
+                            Employees.Remove(SelectedEmployee);
                     },
                     (obj) => selectedEmployee != null));
             }
