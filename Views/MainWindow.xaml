@@ -52,6 +52,13 @@
                 <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_HireDate}"  Binding="{Binding HireDate, StringFormat=dd.MM.yyyy}" Width="Auto" />
                 <DataGridTextColumn Header="{x:Static res:Resources.ColumnHeader_Salary}"  Binding="{Binding Salary, StringFormat=C}" Width="Auto" />
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu Name="cm" StaysOpen="true">
+                    <MenuItem Header="{x:Static res:Resources.Button_Create}" Command="{Binding CreateCommand}" />
+                    <MenuItem Header="{x:Static res:Resources.Button_Update}" Command="{Binding UpdateCommand}" />
+                    <MenuItem Header="{x:Static res:Resources.Button_Delete}" Command="{Binding DeleteCommand}" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </Window>
