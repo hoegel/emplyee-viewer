@@ -162,4 +162,76 @@
   <data name="Button_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Label_Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="Label_FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Label_HireDate" xml:space="preserve">
+    <value>Hire Date</value>
+  </data>
+  <data name="Label_Married" xml:space="preserve">
+    <value>Married</value>
+  </data>
+  <data name="Label_Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Label_Salary" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="Settings_MaxRecords" xml:space="preserve">
+    <value>Max records</value>
+  </data>
+  <data name="Settings_Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Message_MaxRecordsCount" xml:space="preserve">
+    <value>Maximum record count must be greater than 0</value>
+  </data>
+  <data name="Header_ValidationError" xml:space="preserve">
+    <value>Validation Error</value>
+  </data>
+  <data name="Message_EnterValidData" xml:space="preserve">
+    <value>Please, enter valid data</value>
+  </data>
+  <data name="Message_DuplicateIds" xml:space="preserve">
+    <value>This file contains the following Id duplicates:
+{0}
+
+Keep the first occurrence of each duplicate and ignore the rest?</value>
+  </data>
+  <data name="Header_DuplicatedId" xml:space="preserve">
+    <value>Duplicate IDs Found</value>
+  </data>
+  <data name="Header_ShrinkRecords" xml:space="preserve">
+    <value>Shrink Records</value>
+  </data>
+  <data name="Message_ImportedMoreThanLimit" xml:space="preserve">
+    <value>You have set a record limit lower than the number of records currently loaded. Do you want to trim the list?</value>
+  </data>
+  <data name="Message_ImportFailed" xml:space="preserve">
+    <value>Import failed: {0}</value>
+  </data>
+  <data name="Message_ExportFailed" xml:space="preserve">
+    <value>Export failed: {0}</value>
+  </data>
+  <data name="Message_TooManyRecords" xml:space="preserve">
+    <value>This file contains too many records (check out settings)</value>
+  </data>
+  <data name="Message_ImportCancelled" xml:space="preserve">
+    <value>Import cancelled. Please, fix the file and try again</value>
+  </data>
+  <data name="Header_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Header_ImportCancelled" xml:space="preserve">
+    <value>Import Cancelled</value>
+  </data>
+  <data name="Message_DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete '{0}' (id = {1})?</value>
+  </data>
+  <data name="Header_DeleteConfirmation" xml:space="preserve">
+    <value>Delete Confirmation</value>
+  </data>
 </root>

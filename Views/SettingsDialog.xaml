@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Theme" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                <Label Content="{x:Static res:Resources.Settings_Theme}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
                             Grid.Row="0" Grid.Column="0"/>
                 <ComboBox Grid.Row="0" Grid.Column="1" Height="27"
                             ItemsSource="{Binding Themes}"
@@ -42,7 +42,7 @@
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Content="Max records:" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                <Label Content="{x:Static res:Resources.Settings_MaxRecords}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"/>
                 <TextBox Text="{Binding MaxRecordsCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>

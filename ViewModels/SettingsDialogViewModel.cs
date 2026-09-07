@@ -53,8 +53,11 @@ namespace Task2.ViewModels
                 {
                     if(MaxRecordsCount <= 0)
                     {
-                        MessageBox.Show("Maximum record count must be greater than 0",
-                            "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show(
+                            Properties.Resources.Message_MaxRecordsCount,
+                            Properties.Resources.Header_ValidationError,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
                         return;
                     }
                     RequestClose?.Invoke(true);

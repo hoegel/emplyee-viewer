@@ -71,7 +71,16 @@ namespace Task2.ViewModels
                 return deleteCommand ??
                     (deleteCommand = new RelayCommand(obj =>
                     {
-                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete '{SelectedEmployee.FullName}' (id = {SelectedEmployee.Id})?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                        string message = string.Format(
+                            Properties.Resources.Message_DeleteConfirmation,
+                            SelectedEmployee.FullName,
+                            SelectedEmployee.Id);
+
+                        MessageBoxResult messageBoxResult = MessageBox.Show(
+                            message,
+                            Properties.Resources.Header_DeleteConfirmation,
+                            MessageBoxButton.YesNo);
+
                         if (messageBoxResult == MessageBoxResult.Yes)
                             Employees.Remove(SelectedEmployee);
                     },
@@ -94,7 +103,11 @@ namespace Task2.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Export failed : {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(
+                            string.Format(Properties.Resources.Message_ExportFailed, ex.Message),
+                            Properties.Resources.Header_Error,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
                     }
                 }));
             }
@@ -117,7 +130,11 @@ namespace Task2.ViewModels
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show($"Import failed : {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(
+                            string.Format(Properties.Resources.Message_ImportFailed, ex.Message),
+                            Properties.Resources.Header_Error,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
                         return;
                     }
 
@@ -131,17 +148,20 @@ namespace Task2.ViewModels
                         var details = string.Join("\n", duplicateGroups
                             .Select(g => $"  Id {g.Key}: {string.Join(", ", g.Select(e => e.FullName))}"));
 
+                        string message = string.Format(Properties.Resources.Message_DuplicateIds, details);
                         var choice = MessageBox.Show(
-                            $"This file contains the following Id duplicates:\n{details}\n\n" +
-                            "Keep the first occurrence of each duplicate and ignore the rest?",
-                            "Duplicate IDs Found",
+                            message,
+                            Properties.Resources.Header_DuplicatedId,
                             MessageBoxButton.YesNo,
                             MessageBoxImage.Warning);
 
                         if (choice != MessageBoxResult.Yes)
                         {
-                            MessageBox.Show("Import cancelled. Please, fix the file and try again",
-                                "Import cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show(
+                                Properties.Resources.Message_ImportCancelled,
+                                Properties.Resources.Header_ImportCancelled,
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
                             return;
                         }
 
@@ -153,7 +173,11 @@ namespace Task2.ViewModels
 
                     if(imported.Count > Properties.Settings.Default.MaxRecordsCount)
                     {
-                        MessageBox.Show("This file contains too many records (check out settings)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(
+                            Properties.Resources.Message_TooManyRecords,
+                            Properties.Resources.Header_Error,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
                         return;
                     }
                     Employees.Clear();
@@ -176,7 +200,11 @@ namespace Task2.ViewModels
                     {
                         if(vm.MaxRecordsCount < Employees.Count)
                         {
-                            MessageBoxResult messageBoxResult = MessageBox.Show($"You have set a record limit lower than the number of records currently loaded. Do you want to trim the list?", "Shrink records", System.Windows.MessageBoxButton.YesNo);
+                            MessageBoxResult messageBoxResult = MessageBox.Show(
+                                Properties.Resources.Message_ImportedMoreThanLimit,
+                                Properties.Resources.Header_ShrinkRecords,
+                                System.Windows.MessageBoxButton.YesNo);
+
                             if (messageBoxResult == MessageBoxResult.Yes)
                             {
                                 for (int i = Employees.Count - 1; i >= vm.MaxRecordsCount; --i)

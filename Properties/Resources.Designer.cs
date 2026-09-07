@@ -169,6 +169,114 @@ namespace Task2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Confirmation.
+        /// </summary>
+        public static string Header_DeleteConfirmation {
+            get {
+                return ResourceManager.GetString("Header_DeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate IDs Found.
+        /// </summary>
+        public static string Header_DuplicatedId {
+            get {
+                return ResourceManager.GetString("Header_DuplicatedId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Header_Error {
+            get {
+                return ResourceManager.GetString("Header_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Cancelled.
+        /// </summary>
+        public static string Header_ImportCancelled {
+            get {
+                return ResourceManager.GetString("Header_ImportCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shrink Records.
+        /// </summary>
+        public static string Header_ShrinkRecords {
+            get {
+                return ResourceManager.GetString("Header_ShrinkRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validation Error.
+        /// </summary>
+        public static string Header_ValidationError {
+            get {
+                return ResourceManager.GetString("Header_ValidationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age.
+        /// </summary>
+        public static string Label_Age {
+            get {
+                return ResourceManager.GetString("Label_Age", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full Name.
+        /// </summary>
+        public static string Label_FullName {
+            get {
+                return ResourceManager.GetString("Label_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hire Date.
+        /// </summary>
+        public static string Label_HireDate {
+            get {
+                return ResourceManager.GetString("Label_HireDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Married.
+        /// </summary>
+        public static string Label_Married {
+            get {
+                return ResourceManager.GetString("Label_Married", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Label_Position {
+            get {
+                return ResourceManager.GetString("Label_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salary.
+        /// </summary>
+        public static string Label_Salary {
+            get {
+                return ResourceManager.GetString("Label_Salary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string MenuOption_File {
@@ -192,6 +300,108 @@ namespace Task2.Properties {
         public static string MenuOption_Save {
             get {
                 return ResourceManager.GetString("MenuOption_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete &apos;{0}&apos; (id = {1})?.
+        /// </summary>
+        public static string Message_DeleteConfirmation {
+            get {
+                return ResourceManager.GetString("Message_DeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This file contains the following Id duplicates:
+        ///{0}
+        ///
+        ///Keep the first occurrence of each duplicate and ignore the rest?.
+        /// </summary>
+        public static string Message_DuplicateIds {
+            get {
+                return ResourceManager.GetString("Message_DuplicateIds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please, enter valid data.
+        /// </summary>
+        public static string Message_EnterValidData {
+            get {
+                return ResourceManager.GetString("Message_EnterValidData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export failed: {0}.
+        /// </summary>
+        public static string Message_ExportFailed {
+            get {
+                return ResourceManager.GetString("Message_ExportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import cancelled. Please, fix the file and try again.
+        /// </summary>
+        public static string Message_ImportCancelled {
+            get {
+                return ResourceManager.GetString("Message_ImportCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have set a record limit lower than the number of records currently loaded. Do you want to trim the list?.
+        /// </summary>
+        public static string Message_ImportedMoreThanLimit {
+            get {
+                return ResourceManager.GetString("Message_ImportedMoreThanLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import failed: {0}.
+        /// </summary>
+        public static string Message_ImportFailed {
+            get {
+                return ResourceManager.GetString("Message_ImportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum record count must be greater than 0.
+        /// </summary>
+        public static string Message_MaxRecordsCount {
+            get {
+                return ResourceManager.GetString("Message_MaxRecordsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This file contains too many records (check out settings).
+        /// </summary>
+        public static string Message_TooManyRecords {
+            get {
+                return ResourceManager.GetString("Message_TooManyRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max records.
+        /// </summary>
+        public static string Settings_MaxRecords {
+            get {
+                return ResourceManager.GetString("Settings_MaxRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string Settings_Theme {
+            get {
+                return ResourceManager.GetString("Settings_Theme", resourceCulture);
             }
         }
     }

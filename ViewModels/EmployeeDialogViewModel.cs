@@ -50,7 +50,11 @@ namespace Task2.ViewModels
                     {
                         if(!IsEmployeeValid())
                         {
-                            MessageBox.Show("Please enter valid data", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBox.Show(
+                                Properties.Resources.Message_EnterValidData,
+                                Properties.Resources.Header_ValidationError,
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
                             return;
                         }
                         RequestClose?.Invoke(true);
