@@ -22,7 +22,7 @@ namespace Task2.Models
     {
         private uint id;
         private string fullName;
-        private uint age;
+        private int age;
         private bool isMarried;
         private Position position;
         private DateTime hireDate;
@@ -46,7 +46,7 @@ namespace Task2.Models
                 OnPropertyChanged("FullName");
             }
         }
-        public uint Age
+        public int Age
         {
             get { return age; }
             set
