@@ -29,7 +29,7 @@
                             ItemsSource="{Binding Themes}"
                             SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
                             Margin="5" Width="110" HorizontalAlignment="Left"
-                            IsEnabled="False" />
+                            IsEnabled="True" />
             </Grid>
         </GroupBox>
         <GroupBox Header="Records" Grid.Row="1" Grid.ColumnSpan="2">

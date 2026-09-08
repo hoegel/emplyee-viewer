@@ -217,7 +217,7 @@ namespace Task2.ViewModels
                         Properties.Settings.Default.IsDarkTheme = vm.SelectedTheme == "Dark";
                         Properties.Settings.Default.Save();
 
-                        //ThemeManager.ApplyTheme(Properties.Settings.Default.IsDarkTheme);
+                        ThemeManager.ApplyTheme(Properties.Settings.Default.IsDarkTheme);
                     }
                 }));
             }

@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Services\EmployeeCsvMap.cs" />
     <Compile Include="Services\EmployeeCsvService.cs" />
+    <Compile Include="Services\ThemeManager.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDialogViewModel.cs" />
     <Compile Include="ViewModels\SettingsDialogViewModel.cs" />
@@ -95,6 +96,18 @@
     <Compile Include="Views\SettingsDialog.xaml.cs">
       <DependentUpon>SettingsDialog.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EmployeeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
