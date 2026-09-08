@@ -6,7 +6,7 @@
         xmlns:res="clr-namespace:Task2.Properties"
         xmlns:local="clr-namespace:Task2.Views" xmlns:viewmodels="clr-namespace:Task2.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EmployeeDialogViewModel}"
         mc:Ignorable="d"
-        Title="EmployeeDialog" Height="360" Width="530">
+        Title="EmployeeDialog" Height="380" Width="530">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <GroupBox Header="Employee Form">
-            <Grid Height="200">
+            <Grid Height="230">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
